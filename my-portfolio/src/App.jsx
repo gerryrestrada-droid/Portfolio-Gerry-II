@@ -92,7 +92,7 @@ export default function App() {
               <div className="meta">
                 <div><strong>3</strong><small>Projects</small></div>
                 <div><strong>—</strong><small>Experience</small></div>
-              ></div>
+              </div>
               <div className="profile-actions">
                 <a className="btn" href="#contact">Contact</a>
               </div>
