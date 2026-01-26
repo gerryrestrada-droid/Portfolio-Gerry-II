@@ -107,7 +107,7 @@ export default function App() {
             <section className="about">
               <div className="about-left">
                 <h2>About me</h2>
-                <p>I’m Gerry II — a frontend developer crafting refined, accessible web interfaces. I prioritize usable interactions, fast load times, and polished visuals. I enjoy exploring micro-interactions, layout systems, and pragmatic design systems.</p>
+                <p>I’m Gerry II Estrada — a frontend developer crafting refined, accessible web interfaces. I prioritize usable interactions, fast load times, and polished visuals. I enjoy exploring micro-interactions, layout systems, and pragmatic design systems.</p>
                 <p>I’m currently exploring advanced TypeScript, edge functions, and design systems to scale my projects with reliable patterns and better DX.</p>
               </div>
               <aside className="about-right">
