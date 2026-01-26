@@ -13,6 +13,29 @@ npm run dev
 
 Open http://localhost:5173 in your browser.
 
+## Email integration (contact form)
+
+This project includes a small Node email server that accepts POST requests from the contact form and sends messages via SMTP.
+
+1. Copy `.env.example` to `.env` and fill your SMTP credentials and `TO_EMAIL` recipient. You can use your work email `gerryr.estrada@urios.edu.ph` or personal `twodyestrada@gmail.com`.
+
+2. Install dependencies and run the server:
+
+```bash
+npm install
+npm run start:server
+```
+
+3. In another terminal run the frontend dev server:
+
+```bash
+npm run dev
+```
+
+4. Open http://localhost:5173 and submit the contact form. The server listens on port 4000 by default.
+
+If you deploy, make sure to provide the same environment variables to your host (SMTP credentials and `TO_EMAIL`).
+
 ## Git & Deploy
 
 1. Initialize git and push to a GitHub repo named `my-portfolio` (or your preferred name):

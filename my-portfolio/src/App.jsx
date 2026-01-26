@@ -157,7 +157,8 @@ export default function App() {
 
             <section id="contact">
               <h2>Contact</h2>
-              <p>Email: <a href="mailto:gerryr.estrada@urios.edu.ph">gerryr.estrada@urios.edu.ph</a></p>
+              <p>Send me a message using the form below.</p>
+              <ContactForm />
             </section>
           </div>
         </div>
@@ -198,6 +199,58 @@ function SunIcon() {
         <path d="M18.36 5.64l1.42-1.42" />
       </g>
     </svg>
+  )
+}
+
+function ContactForm() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus] = useState('idle')
+
+  function update(field) {
+    return (e) => setForm((s) => ({ ...s, [field]: e.target.value }))
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('sending')
+    try {
+      const res = await fetch('http://localhost:4000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      if (res.ok) {
+        setStatus('sent')
+        setForm({ name: '', email: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+    }
+  }
+
+  return (
+    <form className="contact-form" onSubmit={handleSubmit}>
+      <label>
+        Name
+        <input required value={form.name} onChange={update('name')} />
+      </label>
+      <label>
+        Email
+        <input type="email" required value={form.email} onChange={update('email')} />
+      </label>
+      <label>
+        Message
+        <textarea required value={form.message} onChange={update('message')} />
+      </label>
+      <div>
+        <button className="btn" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending...' : 'Send'}</button>
+        {status === 'sent' && <span className="muted"> Message sent — thank you.</span>}
+        {status === 'error' && <span className="muted"> Error sending message. Try again later.</span>}
+      </div>
+    </form>
   )
 }
 
